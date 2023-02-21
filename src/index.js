@@ -1,3 +1,4 @@
+const fs = require("fs")
 const express = require("express")
 const app = express()
 const port = 25565
@@ -7,6 +8,16 @@ const port = 25565
 // Set the root directory to display "Hello, world!"
 app.get('/', (req, res) => {
   res.send("Hello, world!")
+})
+
+// Load all API endpoints dynamically
+fs.readdir(__dirname + '/api/routes/', (err, files) => {
+  files.forEach(file => {
+    // Load that js file
+    const { route, on } = require("./api/routes/" + file)
+    console.log(route)
+    app.get(route, (req, res) => on(req, res))
+  })
 })
 
 // Start the web server on port {port}
