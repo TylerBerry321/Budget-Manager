@@ -6,6 +6,7 @@
   --main: #9BC4BC;
   --light: #D3FFE9;
   --highlight: #8DDBE0;
+  --error: #ED4337;
 }
 
 body {
@@ -41,10 +42,25 @@ input[type="text"] {
   padding: 0.6rem 1rem;
   box-sizing: border-box;
   margin-bottom: 0.5rem;
+  font-family: 'Poppins', sans-serif;
 
   transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
     color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
     border-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+input[data-optional="true"] {
+  color: var(--dull);
+  border-color: var(--dull);
+}
+
+input.error {
+  color: var(--error);
+  border-color: var(--error);
+}
+
+input[type="text"].error::placeholder {
+  color: var(--error);
 }
 
 input[type="text"]:focus {
@@ -52,4 +68,51 @@ input[type="text"]:focus {
   border-color: var(--highlight);
   color: var(--highlight);
   transform: scale(1.04);
+}
+
+button {
+  background-color: var(--background-alt);
+  color: var(--light);
+  border: 1px solid var(--light);
+  border-radius: 0.2rem;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  
+  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    border-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+button:hover {
+  outline: none;
+  border-color: var(--highlight);
+  color: var(--highlight);
+  transform: scale(1.04);
+}
+
+button.submit {
+  background: linear-gradient(45deg, var(--highlight) 0%, var(--dull) 100%);
+  color: var(--light);
+  border-color: var(--light);
+
+  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    border-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    background-size 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+button.submit:hover {
+  outline: none;
+  border-color: var(--highlight);
+  color: var(--highlight);
+  transform: scale(1.04);
+  background-size: 110%;
+}
+
+button:active, button.submit:active {
+  transform: scale(1.01);
 }

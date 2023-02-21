@@ -21,5 +21,29 @@ for (let inputBox of inputBoxes) {
       }
     })
   }
+  inputBox.addEventListener('focus', (e) => {
+    inputBox.className = inputBox.className.replace("error", "")
+  })
   _index++
 }
+
+const submit = document.getElementById("submit")
+submit.addEventListener('click', () => {
+  var valid = true
+  // Check all boxes are valid
+  for (let box of inputBoxes) {
+    if (box.dataset.optional === 'true') {
+      continue
+    }
+    // Check validity of input
+    if (box.value === null || box.value.length == 0) {
+      if (!box.className.includes("error"))
+        box.className += "error"
+      valid = false
+    }
+  }
+
+  if (valid) {
+    alert("valid!")
+  }
+})
