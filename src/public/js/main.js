@@ -40,6 +40,7 @@ submit.addEventListener('click', () => {
       if (!box.className.includes("error"))
         box.className += "error"
       valid = false
+      createNotification(`Field '${box.id}' is empty!`)
     }
   }
 
@@ -72,7 +73,7 @@ function createNotification(textContent, type) {
   notifications.appendChild(notification)
   setTimeout(() => {
     notification.remove()
-  }, textContent.length * 200)
+  }, 1500)
 }
 
 createNotification("Normal popup", "okay")
