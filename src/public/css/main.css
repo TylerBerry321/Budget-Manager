@@ -102,6 +102,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 button {
   flex-basis: 50%;
   flex: 1;
+  user-select: none;
   background-color: var(--background-alt);
   color: var(--light);
   border: 1px solid var(--light);
