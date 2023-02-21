@@ -47,3 +47,34 @@ submit.addEventListener('click', () => {
     alert("valid!")
   }
 })
+
+const notifications = document.getElementById("notifications")
+function createNotification(textContent) {
+  createNotification(textContent, "")
+}
+function createNotification(textContent, type) {
+  const notification = document.createElement("div")
+  notification.className = "notification " + type
+
+  const content = document.createElement("content")
+  content.className = "content"
+  content.innerText = textContent
+
+  const close = document.createElement("i")
+  close.className = "close fa-solid fa-xmark"
+  close.addEventListener('click', () => {
+    notification.remove()
+  })
+
+  notification.appendChild(content)
+  notification.appendChild(close)
+
+  notifications.appendChild(notification)
+  setTimeout(() => {
+    notification.remove()
+  }, textContent.length * 200)
+}
+
+createNotification("Normal popup", "okay")
+createNotification("Good popup", "good")
+createNotification("Error popup")

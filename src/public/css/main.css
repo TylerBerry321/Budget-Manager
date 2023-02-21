@@ -7,6 +7,7 @@
   --light: #D3FFE9;
   --highlight: #8DDBE0;
   --error: #ED4337;
+  --good: #4ab516;
 }
 
 body {
@@ -115,4 +116,72 @@ button.submit:hover {
 
 button:active, button.submit:active {
   transform: scale(1.01);
+}
+
+div#notifications {
+  position: fixed;
+  right: 0;
+  width: 20rem;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.notification {
+  position: relative;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.2rem 1rem;
+  background-color: var(--error);
+  color: var(--light);
+  border: 1px solid var(--light);
+  border-radius: 0.2rem;
+  margin-bottom: 1rem;
+
+  animation: NotificationIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.notification.good {
+  background-color: var(--good);
+}
+
+.notification.okay {
+  background-color: var(--background-alt);
+}
+
+.notification .content {
+  position: relative;
+  display: inline-block;
+  max-width: 80%;
+  word-wrap: break-word;
+  vertical-align: top;
+}
+
+.notification i.close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+@keyframes NotificationIn {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  div#notifications {
+    top: 0;
+    width: 100%;
+
+    animation: NotificationIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 }
