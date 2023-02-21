@@ -92,13 +92,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* Custom button */
 
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0rem;
+}
+
 button {
+  flex-basis: 50%;
+  flex: 1;
   background-color: var(--background-alt);
   color: var(--light);
   border: 1px solid var(--light);
   border-radius: 0.2rem;
   font-family: 'Poppins', sans-serif;
   width: 100%;
+  min-width: fit-content;
+  box-sizing: border-box;
   padding: 0.6rem 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
