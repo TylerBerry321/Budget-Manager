@@ -1,5 +1,7 @@
 // For QOL allow people to use up/down arrow to switch between input boxes
 const inputBoxes = document.getElementsByTagName('input')
+const submit = document.getElementById("submit")
+
 var _index = 0
 for (let inputBox of inputBoxes) {
   if (inputBox.getAttribute('type') == 'text') {
@@ -17,6 +19,10 @@ for (let inputBox of inputBoxes) {
         if (index + 1 < inputBoxes.length) {
           // Focus the previous element
           inputBoxes[index + 1].focus()
+        } else if (index + 1 == inputBoxes.length) {
+          submit.click()
+          inputBox.disabled = true
+          inputBox.disabled = false
         }
       }
     })
@@ -27,7 +33,6 @@ for (let inputBox of inputBoxes) {
   _index++
 }
 
-const submit = document.getElementById("submit")
 submit.addEventListener('click', () => {
   var valid = true
   // Check all boxes are valid
