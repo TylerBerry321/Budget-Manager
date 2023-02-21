@@ -77,7 +77,23 @@ function createNotification(textContent, type) {
 
   notifications.appendChild(notification)
   setTimeout(() => {
-    notification.remove()
+    const duration = 300
+    notification.animate([
+      {
+        transform: `translateY(0)`,
+        opacity: 1
+      },
+      {
+        transform: `translateY(1rem)`,
+        opacity: 0
+      }
+    ], {
+      duration: duration,
+      easing: `cubic-bezier(0.075, 0.82, 0.165, 1)`
+    })
+    setTimeout(() => {
+      notification.remove()
+    }, duration)
   }, 1500)
 }
 
