@@ -20,6 +20,8 @@ body {
   background-color: var(--background);
 }
 
+/* Form controls */
+
 .form-container {
   display: flex;
   align-items: center;
@@ -33,7 +35,9 @@ body {
   padding: 1rem 3rem;
 }
 
-input[type="text"] {
+/* Custom inline text input */
+
+input {
   position: relative;
   width: 100%;
   background-color: var(--background-alt);
@@ -60,7 +64,7 @@ input.error {
   border-color: var(--error);
 }
 
-input[type="text"].error::placeholder {
+input.error::placeholder {
   color: var(--error);
 }
 
@@ -70,6 +74,23 @@ input[type="text"]:focus {
   color: var(--highlight);
   transform: scale(1.04);
 }
+
+/* Custom date picker */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.date-input {
+  display: flex;
+  gap: 1rem;
+}
+
+.date-input input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+/* Custom button */
 
 button {
   background-color: var(--background-alt);
@@ -117,6 +138,8 @@ button.submit:hover {
 button:active, button.submit:active {
   transform: scale(1.01);
 }
+
+/* Custom notifications system */
 
 div#notifications {
   position: fixed;
@@ -177,6 +200,8 @@ div#notifications {
 
   }
 }
+
+/* Mobile support */
 
 @media only screen and (max-width: 600px) {
   div#notifications {
