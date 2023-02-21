@@ -3,11 +3,12 @@ const express = require("express")
 const app = express()
 const port = 25565
 
-// TODO(Matt): Set location for static content
+// Set location for static content
+app.use('/public', express.static(__dirname + '/public'))
 
 // Set the root directory to display "Hello, world!"
 app.get('/', (req, res) => {
-  res.send("Hello, world!")
+  res.sendFile(__dirname + '/public/index.html')
 })
 
 // Load all API endpoints dynamically
@@ -15,7 +16,6 @@ fs.readdir(__dirname + '/api/routes/', (err, files) => {
   files.forEach(file => {
     // Load that js file
     const { route, on } = require("./api/routes/" + file)
-    console.log(route)
     app.get(route, (req, res) => on(req, res))
   })
 })
