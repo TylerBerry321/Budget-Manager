@@ -1,0 +1,22 @@
+{
+  "name": "budget-manager",
+  "version": "1.0.0",
+  "description": "A9_2 MMU Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylerBerry321/Budget-Manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TylerBerry321/Budget-Manager/issues"
+  },
+  "homepage": "https://github.com/TylerBerry321/Budget-Manager#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
