@@ -15,31 +15,18 @@
           <h1>Budget Management</h1>
         </div>
 
-        <h2>Some Section</h2>
-        <input type="text" data-optional="true" placeholder="Some Value">
-        <input type="text" data-optional="true" placeholder="Some Value">
-        <input type="text" data-optional="true" placeholder="Some Value">
-        <input type="text" data-optional="true" placeholder="Some Value">
-        <input type="date" data-optional="true">
+        <h2>Right now</h2>
+        <input type="number" id="current-income" placeholder="Income (£ Per Year)">
+        <input type="number" id="current-savings" placeholder="Savings">
 
-        <h2>Some Section</h2>
-        <input type="text" placeholder="Some Value">
-        <input type="text" placeholder="Some Value">
-        <h2>Some Section</h2>
-
-        <input type="text" placeholder="Some Value">
-        <input type="text" placeholder="Some Value">
+        <h2>What I want</h2>
+        <input type="number" id="future-income" placeholder="Income (£ Per Year)">
+        <input type="number" id="future-savings" placeholder="Savings">
         
         <div class="button-container">
-          <button>Normal button</button>
-          <button>Normal button</button>
-          <button>Normal button</button>
-          <button>Normal button</button>
-          <button>Normal button</button>
-          <button>Normal button</button>
-          <button>Normal button</button>
+          <button class="warning" id="reset">Reset</button>
+          <button class="submit" id="submit">Submit</button>
         </div>
-        <button class="submit" id="submit">Submit</button>
       </div>
 
     </div>

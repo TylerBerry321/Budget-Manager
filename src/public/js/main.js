@@ -1,20 +1,29 @@
 // For QOL allow people to use up/down arrow to switch between input boxes
 const inputBoxes = document.getElementsByTagName('input')
 const submit = document.getElementById("submit")
+const reset = document.getElementById("reset")
+
+reset.addEventListener('click', () => {
+  for (let inputBox of inputBoxes) {
+    inputBox.value = ''
+  }
+})
 
 var _index = 0
 for (let inputBox of inputBoxes) {
-  if (inputBox.getAttribute('type') == 'text') {
+  if (['text', 'number'].includes(inputBox.getAttribute('type'))) {
     const index = _index
     inputBox.addEventListener('keydown', (e) => {
       // If is keyUp
       if (e.key === 'ArrowUp') {
+        e.preventDefault()
         // Check if we have another element
         if (index - 1 >= 0) {
           // Focus the previous element
           inputBoxes[index - 1].focus()
         }
       } else if (e.key === 'ArrowDown' || e.key === 'Enter') {
+        e.preventDefault()
         // Check if we have another element
         if (index + 1 < inputBoxes.length) {
           // Focus the previous element
@@ -24,6 +33,8 @@ for (let inputBox of inputBoxes) {
           inputBox.disabled = true
           inputBox.disabled = false
         }
+      } else if (!e.key.toString().match("[0-9]|Backspace|Delete|ArrowLeft|ArrowRight|Tab")) {
+        e.preventDefault()
       }
     })
   }
@@ -41,15 +52,17 @@ submit.addEventListener('click', () => {
       continue
     }
     // Check validity of input
-    if (box.value === null || box.value.length == 0) {
+    const boxValueFloat = parseFloat(box.value)
+    if (box.value === null || box.value.length == 0 || boxValueFloat == undefined || boxValueFloat < 0) {
       if (!box.className.includes("error"))
         box.className += "error"
       valid = false
-      createNotification(`Field '${box.id}' is empty!`)
+      createNotification(`Field '${box.id}' is required!`)
     }
   }
 
   if (valid) {
+    // TODO(Matt): API Call and go to new page with data
     alert("valid!")
   }
 })
@@ -96,7 +109,3 @@ function createNotification(textContent, type) {
     }, duration)
   }, 1500)
 }
-
-createNotification("Normal popup", "okay")
-createNotification("Good popup", "good")
-createNotification("Error popup")
