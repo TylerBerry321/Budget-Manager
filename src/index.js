@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html')
 })
 
+app.get('/results', (req, res) => {
+  res.sendFile(__dirname + '/public/results.html')
+})
+
 // Load all API endpoints dynamically
 fs.readdir(__dirname + '/api/routes/', (err, files) => {
   files.forEach(file => {

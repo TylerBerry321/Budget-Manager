@@ -203,6 +203,16 @@ div#notifications {
   cursor: pointer;
 }
 
+.tip {
+  background-color: var(--background-alt);
+  box-sizing: border-box;
+  padding: 0.2rem 1rem;
+  color: var(--light);
+  border: 1px solid var(--light);
+  border-radius: 0.2rem;
+  margin-bottom: 1rem;
+}
+
 @keyframes NotificationIn {
   0% {
     transform: translateY(1rem);

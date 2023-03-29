@@ -63,7 +63,17 @@ submit.addEventListener('click', () => {
 
   if (valid) {
     // TODO(Matt): API Call and go to new page with data
-    alert("valid!")
+    const currentEarning = document.getElementById("current-income").value
+    const currentSavings = document.getElementById("current-savings").value
+
+    const goalEarning = document.getElementById("future-income").value
+    const goalSavings = document.getElementById("future-savings").value
+
+    fetch(`./api/calculate?current_earning=${currentEarning}&current_saving=${currentSavings}&goal_earning=${goalEarning}&goal_saving=${goalSavings}`)
+      .then((res) => res.json())
+      .then((data) => {
+        location.href = `./results?status=${data.status}&moneyToEarn=${data.moneyToEarn}&moneyToSave=${data.moneyToSave}&tips=${data.tips}`
+      })
   }
 })
 
@@ -106,6 +116,6 @@ function createNotification(textContent, type) {
     })
     setTimeout(() => {
       notification.remove()
-    }, duration)
+    }, duration - 1)
   }, 1500)
 }
